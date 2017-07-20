@@ -4,7 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'littlebits-frontend',
     environment: environment,
-    rootURL: '/',
+    rootURL: '/static/ember/',
+    bURL: '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {

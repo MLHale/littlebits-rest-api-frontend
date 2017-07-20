@@ -29,10 +29,10 @@ export default Ember.Service.extend({
 
 		//make api request
 		Ember.$.post('/api/session/', data, function(response){
-			if(response.data.isauthenticated){
+
+			if(response.isauthenticated){
 				//success
-				auth.set('user', auth.get('store').findRecord('user', response.data.userid));
-				auth.set('profile', auth.get('store').findRecord('profile', response.data.userid));
+				auth.set('userid', response.userid);
 				auth.set('isLoggedIn', true);
 
 				if(remember){
@@ -49,7 +49,7 @@ export default Ember.Service.extend({
 				auth.set('password', '');
 
 
-				auth.get('routing').transitionTo('');
+				auth.get('routing').transitionTo('index');
 
         console.log('Login POST Request to /api/session/ was successful.');
 
@@ -102,11 +102,11 @@ export default Ember.Service.extend({
 
 		//check to see if the user is logged into the API
 		Ember.$.get('/api/session', function(response){
-			if(response.data.isauthenticated){
+			if(response.isauthenticated){
 				//success
-				console.log('The user: \''+response.data.username+'\' is currently logged in.');
-				auth.set('user', auth.get('store').findRecord('user', response.data.userid));
-				auth.set('profile', auth.get('store').findRecord('profile', response.data.userid));
+				console.log('The user: \''+response.username+'\' is currently logged in.');
+				auth.set('username', response.username);
+				auth.set('userid', response.userid);
 				auth.set('isLoggedIn', true);
 			} else{
 				//errors

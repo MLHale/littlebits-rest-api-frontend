@@ -1,18 +1,22 @@
-
 <div class="container-fluid" id="app-main">
 	<div class="row row-offcanvas row-offcanvas-left {{showMenu}}">
 		<!--   *** SIDEBAR ***-->
 		<div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
 			<div class="sidebar-content">
 				{{#link-to 'index'}}
-				    <p class="sidebar-p"><img src="img/NGC-logo.png" width="100%" class="img-rounded"/></p>
+				    <p class="sidebar-p"><img src="{{constants.rootURL}}img/NGC-logo.png" width="100%" class="img-rounded"/></p>
         {{/link-to}}
         <h4>Dashboard Demo App</h4>
 				<!-- <p class="sidebar-p"></p> -->
 
 				<ul class="sidebar-menu">
+
+					{{#if auth.isLoggedIn}}
+						Logged in as: {{auth.username}} (<a {{action "auth.logout"}}>Logout</a>)
+					{{else}}
+						{{#active-link}}{{#link-to 'login'}}Login{{/link-to}}{{/active-link}}
+					{{/if}}
 					{{#active-link}}{{#link-to 'index'}}Home{{/link-to}}{{/active-link}}
-          {{#active-link}}{{#link-to 'login'}}Login{{/link-to}}{{/active-link}}
 				</ul>
 				<p class="social">
 					<a href="https://github.com/MLHale/" data-animate-hover="pulse" target="_blank" class="external facebook"><i class="fa fa-github"></i></a>
@@ -26,6 +30,7 @@
 				</div>
 			</div>
       <div class="col-xs-12">
+
         <div class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-play"></span> Turn Cloudbit On</div>
       </div>
 		</div>
