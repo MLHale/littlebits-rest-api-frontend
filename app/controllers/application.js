@@ -17,13 +17,22 @@ export default Ember.Controller.extend({
     },
     activateCloudbit(){
       var data = {
-        'eventtype': 'dashboard_on',
-        'timestamp': Date.now(),
-        'userid': this.get('auth.userid')
+        eventtype: 'dashboard_on',
+        timestamp: Date.now().toString(),
+        userid: this.get('auth.userid')
       };
-      Ember.$.post('/api/activatecloudbit', data, function(response){
 
-      })
+      Ember.$.ajax({
+        url:'/api/activatecloudbit',
+        type:"POST",
+        data: JSON.stringify(data),
+        contentType:"application/json",
+        dataType:"json",
+        success: function(response){
+          console.log('Attempting to turn cloudbit on. Response from server is: ');
+          console.log(response);
+        }
+      });
     }
   }
 });
