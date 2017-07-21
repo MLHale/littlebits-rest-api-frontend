@@ -12,7 +12,7 @@
 				<ul class="sidebar-menu">
 
 					{{#if auth.isLoggedIn}}
-						Logged in as: {{auth.username}} (<a {{action "auth.logout"}}>Logout</a>)
+						Logged in as: {{auth.username}} (<a {{action "logout"}}>Logout</a>)
 					{{else}}
 						{{#active-link}}{{#link-to 'login'}}Login{{/link-to}}{{/active-link}}
 					{{/if}}
@@ -31,7 +31,7 @@
 			</div>
       <div class="col-xs-12">
 
-        <div class="btn btn-block btn-lg btn-success"><span class="glyphicon glyphicon-play"></span> Turn Cloudbit On</div>
+        <div class="btn btn-block btn-lg btn-success" {{action 'activateCloudbit'}}><span class="glyphicon glyphicon-play"></span> Turn Cloudbit On</div>
       </div>
 		</div>
 		<!--   *** SIDEBAR END ***  -->

@@ -11,6 +11,19 @@ export default Ember.Controller.extend({
         this.set('showMenu', 'active');
       }
 
+    },
+    logout(){
+      this.get('auth').logout();
+    },
+    activateCloudbit(){
+      var data = {
+        'eventtype': 'dashboard_on',
+        'timestamp': Date.now(),
+        'userid': this.get('auth.userid')
+      };
+      Ember.$.post('/api/activatecloudbit', data, function(response){
+
+      })
     }
   }
 });

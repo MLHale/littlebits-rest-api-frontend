@@ -28,7 +28,7 @@ export default Ember.Service.extend({
 		var auth = this;
 
 		//make api request
-		Ember.$.post('/api/session/', data, function(response){
+		Ember.$.post('/api/session', data, function(response){
 
 			if(response.isauthenticated){
 				//success
@@ -65,7 +65,7 @@ export default Ember.Service.extend({
 	logout: function(){
 		console.log('Logging out');
 		var auth = this;
-		Ember.$.ajax({url: '/api/session/', type: 'DELETE'}).then(
+		Ember.$.ajax({url: '/api/session', type: 'DELETE'}).then(
 			function(response){
 				console.log('Logout DELETE Request to /api/session/ was successful:' + response);
 				auth.set('isLoggedIn', false);
